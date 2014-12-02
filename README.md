@@ -1,6 +1,13 @@
 # Rack::Bug::MustachePanel
 
-TODO: Write a gem description
+MustachePanel is a Rack::Bug panel which tracks the time spent rendering
+Mustache views as well as all the variables accessed during view
+rendering.
+
+It can be used to track down slow partials and ensure you're only
+generating data you need.
+
+Also, it's fun.
 
 ## Installation
 

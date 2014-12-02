@@ -2,14 +2,6 @@ require "rack/bug/panels/mustache_panel/version"
 
 module Rack
   module Bug
-    # MustachePanel is a Rack::Bug panel which tracks the time spent rendering
-    # Mustache views as well as all the variables accessed during view
-    # rendering.
-    #
-    # It can be used to track down slow partials and ensure you're only
-    # generating data you need.
-    #
-    # Also, it's fun.
     class MustachePanel < Panel
       require "rack/bug/panels/mustache_panel/mustache_extension"
 
