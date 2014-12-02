@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = Rack::Bug::MustachePanel::VERSION
   spec.authors       = ["Ricardo Mendes"]
   spec.email         = ["rokusu@gmail.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
   spec.homepage      = ""
+  spec.summary       = %q{Mustache panel for Rack::Bug}
+  spec.description   = %q{Mustache panel for Rack::Bug}
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
