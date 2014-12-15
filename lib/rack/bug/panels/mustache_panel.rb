@@ -5,6 +5,8 @@ module Rack
     class MustachePanel < Panel
       require "rack/bug/panels/mustache_panel/mustache_extension"
 
+      LIMIT = 10
+
       # The view is responsible for rendering our panel. While Rack::Bug
       # takes care of the nav, the content rendered by View is used for
       # the panel itself.
@@ -14,8 +16,8 @@ module Rack
         # We track the render times of all the Mustache views on this
         # page load.
         def times
-          MustachePanel.times.map do |key, value|
-            { :key => key, :value => value }
+          MustachePanel.times.each_with_object({}) do |obj, key, value|
+            obj[key] = value
           end
         end
 
@@ -23,12 +25,13 @@ module Rack
         def variables
           vars = MustachePanel.variables.sort_by { |key, _| key.to_s }
           vars.map do |key, value|
-            # Arrays can get too huge. Just show the first 10 to give you
+            # Arrays can get too huge. Just show the first 10 (LIMIT) to give you
             # some idea.
-            if value.is_a?(Array) && value.size > 10
-              size = value.size
-              value = value.first(10)
-              value << "...and #{size - 10} more"
+            size = value.size
+
+            if value.is_a?(Array) && size > LIMIT
+              value = value.first(LIMIT)
+              value << "...and #{size - LIMIT} more"
             end
 
             { :key => key, :value => value.inspect }
